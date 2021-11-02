@@ -6624,6 +6624,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50915408107096866, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a9f5657f32c28a04b91df570773f0810, type: 2}
     - target: {fileID: 95391780594314510, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
       propertyPath: m_Controller
       value: 
@@ -6688,11 +6692,24 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 319787529263415089, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 319787529263415089, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 838423051}
+    - target: {fileID: 319787529263415089, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+      propertyPath: jumpForce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2495019999162818518, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 319787529263415089, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
 --- !u!114 &838423048 stripped
 MonoBehaviour:
@@ -6757,6 +6774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   jumpForce: 1
+  Player: {fileID: 838423051}
 --- !u!111 &838423057
 Animation:
   m_ObjectHideFlags: 0
@@ -9317,7 +9335,7 @@ GameObject:
   - component: {fileID: 1200689434}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: World
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43013,7 +43031,7 @@ CompositeCollider2D:
   m_GameObject: {fileID: 1200689428}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a9f5657f32c28a04b91df570773f0810, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -51108,7 +51126,7 @@ GameObject:
   - component: {fileID: 1354378413}
   m_Layer: 0
   m_Name: Ground (1)
-  m_TagString: Untagged
+  m_TagString: World
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95174,10 +95192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f4a4ae3a36547dd915a91ceebed970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
-  gamePlayCanvasii: []
-  gameController: {fileID: 1754240607}
-  showMainCanvas: 0
 --- !u!82 &1754240611
 AudioSource:
   m_ObjectHideFlags: 0

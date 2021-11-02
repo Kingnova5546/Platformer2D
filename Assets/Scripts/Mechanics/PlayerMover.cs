@@ -1,6 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Platformer.Gameplay;
+using static Platformer.Core.Simulation;
+using Platformer.Model;
+using Platformer.Core;
+using static Platformer.Mechanics.PlayerController;
 
 public class PlayerMover : MonoBehaviour
 {
@@ -10,8 +15,14 @@ public class PlayerMover : MonoBehaviour
     private float moveInput;
     private bool facingRight = true;
 
+    //colider?
+    public Collider2D Player;
     private Rigidbody2D rb;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        //collider2d = GetComponent<Collider2D>();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,6 +31,21 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var World = GameObject.FindGameObjectsWithTag("World");/*.GetComponents<Collider2D>();*/
+
+        for (int i = 0; i < World.Length; i++)
+        {
+            if (Player.IsTouching(World[i].GetComponent<Collider2D>()))
+            {
+                Debug.Log("You are touching ground");
+
+            }
+            else
+            {
+                Debug.Log("You aren't touching ground");
+            }
+        }
+            
         
     }
 
@@ -36,6 +62,7 @@ public class PlayerMover : MonoBehaviour
             Flip();
         }
     }
+
 
     void Flip()
     {
