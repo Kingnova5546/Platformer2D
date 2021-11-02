@@ -14,6 +14,8 @@ public class PlayerMover : MonoBehaviour
     public float jumpForce;
     private float moveInput;
     private bool facingRight = true;
+    private bool touching = false;
+    private int p;
 
     //colider?
     public Collider2D Player;
@@ -31,23 +33,40 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var World = GameObject.FindGameObjectsWithTag("World");/*.GetComponents<Collider2D>();*/
-
+        //Find all objects with tag the tag world
+        var World = GameObject.FindGameObjectsWithTag("World");
+        //loop through each object with tag world
         for (int i = 0; i < World.Length; i++)
         {
+            //loops through each componenet in the selected object (object selected by i)
             if (Player.IsTouching(World[i].GetComponent<Collider2D>()))
             {
-                Debug.Log("You are touching ground");
-
-            }
-            else
-            {
-                Debug.Log("You aren't touching ground");
+                touching = true;
+                p = i;
+                break;
             }
         }
-            
-        
+        //if touching world run this
+        if (touching)
+        {
+            Debug.Log("Touching ground");
+            //if no longer touching world set touching to false and breaks out of if statement
+            if (!Player.IsTouching(World[p].GetComponent<Collider2D>()))
+            {
+                touching = false;
+            }
+        }
+        else if (!touching)
+        {
+            Debug.Log("Not touching ground");
+        }
+
     }
+
+
+
+
+
 
     private void FixedUpdate()
     {
@@ -57,7 +76,7 @@ public class PlayerMover : MonoBehaviour
         {
             Flip();
         }
-        else if (facingRight == true && moveInput <0)
+        else if (facingRight == true && moveInput < 0)
         {
             Flip();
         }
