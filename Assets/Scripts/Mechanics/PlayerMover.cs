@@ -9,7 +9,7 @@ using static Platformer.Mechanics.PlayerController;
 
 public class PlayerMover : MonoBehaviour
 {
-
+    private FlipGravity flipGrav;
     public float speed;
     public float jumpForce;
     private float moveInput;
@@ -20,6 +20,9 @@ public class PlayerMover : MonoBehaviour
     //colider?
     public Collider2D Player;
     private Rigidbody2D rb;
+
+    public bool FacingRight { get => facingRight; set => facingRight = value; }
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -27,6 +30,7 @@ public class PlayerMover : MonoBehaviour
     }
     void Start()
     {
+        flipGrav = GetComponent<FlipGravity>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -56,9 +60,22 @@ public class PlayerMover : MonoBehaviour
                 touching = false;
             }
         }
+        //if not touching world run this
         else if (!touching)
         {
             Debug.Log("Not touching ground");
+        }
+        //if I'm pressing jump button and touching then do this
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if (touching)
+            {
+                //changes jumpforce depending on gravity.
+                if(flipGrav.Top)
+                rb.velocity = Vector2.up * jumpForce * -1;
+                else
+                rb.velocity = Vector2.up * jumpForce;
+            }
         }
 
     }
@@ -72,11 +89,11 @@ public class PlayerMover : MonoBehaviour
     {
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        if (facingRight == false && moveInput > 0)
+        if (FacingRight == false && moveInput > 0)
         {
             Flip();
         }
-        else if (facingRight == true && moveInput < 0)
+        else if (FacingRight == true && moveInput < 0)
         {
             Flip();
         }
@@ -85,7 +102,7 @@ public class PlayerMover : MonoBehaviour
 
     void Flip()
     {
-        facingRight = !facingRight;
+        FacingRight = !FacingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
