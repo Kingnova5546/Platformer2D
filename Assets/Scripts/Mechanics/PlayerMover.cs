@@ -78,6 +78,14 @@ public class PlayerMover : MonoBehaviour
             }
         }
 
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if (touching)
+            {
+                rb.velocity = Vector2.up * jumpForce;
+            }
+        }
+
     }
 
 
