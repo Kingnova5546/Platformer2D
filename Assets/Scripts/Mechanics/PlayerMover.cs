@@ -71,18 +71,10 @@ public class PlayerMover : MonoBehaviour
             if (touching)
             {
                 //changes jumpforce depending on gravity.
-                if(flipGrav.Top)
-                rb.velocity = Vector2.up * jumpForce * -1;
+                if (flipGrav.Top)
+                    rb.velocity = Vector2.up * jumpForce * -1;
                 else
-                rb.velocity = Vector2.up * jumpForce;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            if (touching)
-            {
-                rb.velocity = Vector2.up * jumpForce;
+                    rb.velocity = Vector2.up * jumpForce;
             }
         }
 
@@ -108,7 +100,7 @@ public class PlayerMover : MonoBehaviour
     }
 
 
-    void Flip()
+    public void Flip()
     {
         FacingRight = !FacingRight;
         Vector3 Scaler = transform.localScale;

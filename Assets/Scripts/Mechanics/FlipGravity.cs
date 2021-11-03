@@ -40,13 +40,19 @@ public class FlipGravity : MonoBehaviour
     {
         if (!Top)
         {
-            Camera.transform.eulerAngles = new Vector3(-180f, 0, 0);
+            //if camera flip is checked flip camera, if not ignore
+            if (CameraFlips)
+            Camera.transform.eulerAngles = new Vector3(180f, 0, 0);
             transform.eulerAngles = new Vector3(0, 0, 180f);
+            //flips the player when camera flips to maintain the correct direction
+            player.Flip();
         }
         else
         {
+            if (CameraFlips)
             Camera.transform.eulerAngles = Vector3.zero;
             transform.eulerAngles = Vector3.zero;
+            player.Flip();
         }
         player.FacingRight = !player.FacingRight;
         Top = !Top;
