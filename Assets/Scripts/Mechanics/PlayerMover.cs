@@ -61,6 +61,14 @@ public class PlayerMover : MonoBehaviour
             Debug.Log("Not touching ground");
         }
 
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if (touching)
+            {
+                rb.velocity = Vector2.up * jumpForce;
+            }
+        }
+
     }
 
 
