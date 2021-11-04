@@ -16,6 +16,8 @@ public class PlayerMover : MonoBehaviour
     private bool facingRight = true;
     private bool touching = false;
     private int p;
+    private float GravDefault = 1f; //default gravity is 1 for rigidbody
+    public float Gravity = 1f; // Anything higher than 1 increases gravity. 0 is no gravity at all. Ex: 0.5 = half normal gravity
 
     //colider?
     public Collider2D Player;
@@ -37,6 +39,13 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //checks gravity value, if not's not equal to default, update it, then reassign the current gravity as new default.
+        //In update method as gravity may be changed by triggers in-game.
+        if (GravDefault != Gravity)
+        {
+            GravDefault = Gravity;
+            rb.gravityScale = Gravity;
+        }
         //Find all objects with tag the tag world
         var World = GameObject.FindGameObjectsWithTag("World");
         //loop through each object with tag world
@@ -53,7 +62,7 @@ public class PlayerMover : MonoBehaviour
         //if touching world run this
         if (touching)
         {
-            Debug.Log("Touching ground");
+            //Debug.Log("Touching ground");
             //if no longer touching world set touching to false and breaks out of if statement
             if (!Player.IsTouching(World[p].GetComponent<Collider2D>()))
             {
@@ -63,10 +72,10 @@ public class PlayerMover : MonoBehaviour
         //if not touching world run this
         else if (!touching)
         {
-            Debug.Log("Not touching ground");
+            //Debug.Log("Not touching ground");
         }
         //if I'm pressing jump button and touching then do this
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.Space))
         {
             if (touching)
             {
