@@ -755,7 +755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123297430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.80576, y: 5.338133, z: -9}
+  m_LocalPosition: {x: -5.805726, y: 5.3381777, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1086,9 +1086,9 @@ GameObject:
   - component: {fileID: 1859970313}
   - component: {fileID: 1859970318}
   - component: {fileID: 1859970317}
+  - component: {fileID: 1859970314}
   - component: {fileID: 1859970316}
   - component: {fileID: 1859970315}
-  - component: {fileID: 1859970314}
   m_Layer: 0
   m_Name: MainLevel(ML)Ground
   m_TagString: World
