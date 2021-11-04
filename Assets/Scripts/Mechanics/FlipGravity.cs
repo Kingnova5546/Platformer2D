@@ -7,10 +7,9 @@ public class FlipGravity : MonoBehaviour
     private PlayerMover player;
     private bool top;
     private Rigidbody2D rb;
-    private float GravDefault = 1f;
-    public float Gravity = 1f;
     public bool CameraFlips = true;
     private GameObject Camera;
+    public bool isEnabled = false; // Use up arrow key to activate when enabled. For testing, will rewrite for triggers when needed.
 
     public bool Top { get => top; set => top = value; }
 
@@ -24,17 +23,17 @@ public class FlipGravity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GravDefault != Gravity)
+        if (isEnabled)
         {
-            GravDefault = Gravity;
-            rb.gravityScale = Gravity;
+            
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                rb.gravityScale *= -1;
+                Rotation();
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Is this working?");
-            rb.gravityScale *= -1;
-            Rotation();
-        }
+       
+
     }
     void Rotation()
     {
