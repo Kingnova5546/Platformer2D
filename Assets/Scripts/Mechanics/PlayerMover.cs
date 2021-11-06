@@ -19,6 +19,10 @@ public class PlayerMover : MonoBehaviour
     private float GravDefault = 1f; //default gravity is 1 for rigidbody
     public float Gravity = 1f; // Anything higher than 1 increases gravity. 0 is no gravity at all. Ex: 0.5 = half normal gravity
 
+    //play animation
+    public Animator animator;
+
+
     //colider?
     public Collider2D Player;
     private Rigidbody2D rb;
@@ -97,6 +101,10 @@ public class PlayerMover : MonoBehaviour
     private void FixedUpdate()
     {
         moveInput = Input.GetAxis("Horizontal");
+        if (moveInput == 0)
+            animator.SetBool("SpeedB", true);
+        else
+            animator.SetBool("SpeedB", false);
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         if (FacingRight == false && moveInput > 0)
         {
