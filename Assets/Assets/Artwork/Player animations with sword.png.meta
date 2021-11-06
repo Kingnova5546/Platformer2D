@@ -1,67 +1,70 @@
 fileFormatVersion: 2
-guid: be1043a5435f52740b9ded51a6628f3d
+guid: 997b783136b0d2348b169907ccae9078
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8995903996053175107
-    second: Player animations_0
+      213: -5560691367463571908
+    second: Player animations with sword_0
   - first:
-      213: -8153818183780266324
-    second: Player animations_1
+      213: 3992958345704582791
+    second: Player animations with sword_1
   - first:
-      213: -1267507345925839490
-    second: Player animations_2
+      213: 6507956581651181260
+    second: Player animations with sword_2
   - first:
-      213: 7187610988092917416
-    second: Player animations_3
+      213: 1240374813123608393
+    second: Player animations with sword_3
   - first:
-      213: -2337650036039949948
-    second: Player animations_4
+      213: 2016940975543493582
+    second: Player animations with sword_4
   - first:
-      213: 1053092228172005990
-    second: Player animations_5
+      213: -3920080596392766192
+    second: Player animations with sword_5
   - first:
-      213: -1070663141498281993
-    second: Player animations_6
+      213: -1696862612015799412
+    second: Player animations with sword_6
   - first:
-      213: 1448305697263286126
-    second: Player animations_7
+      213: 4071071477284237894
+    second: Player animations with sword_7
   - first:
-      213: 1205775773113286514
-    second: Player animations_8
+      213: 4758846665990739505
+    second: Player animations with sword_8
   - first:
-      213: -5674756599506219234
-    second: Player animations_9
+      213: 3453522010837228144
+    second: Player animations with sword_9
   - first:
-      213: -8385051833534177062
-    second: Player animations_10
+      213: -1558737469904699123
+    second: Player animations with sword_10
   - first:
-      213: -6817146381621945628
-    second: Player animations_11
+      213: 8983971427802642929
+    second: Player animations with sword_11
   - first:
-      213: -9157103300135802457
-    second: Player animations_12
+      213: 693949165014193248
+    second: Player animations with sword_12
   - first:
-      213: 7523506650330665035
-    second: Player animations_13
+      213: 6297503126046615639
+    second: Player animations with sword_13
   - first:
-      213: -4955314829852761565
-    second: Player animations_14
+      213: 2408738789014103725
+    second: Player animations with sword_14
   - first:
-      213: -2536680581129064657
-    second: Player animations_15
+      213: 4318673179065419315
+    second: Player animations with sword_15
   - first:
-      213: -3247571441564632332
-    second: Player animations_16
+      213: 3306524176071333741
+    second: Player animations with sword_16
   - first:
-      213: -848374024934842082
-    second: Player animations_17
+      213: -27365677560369531
+    second: Player animations with sword_17
   - first:
-      213: 3997738843059489862
-    second: Player animations_18
+      213: 3700386197780443242
+    second: Player animations with sword_18
   - first:
-      213: -6217486211769710389
-    second: Player animations_19
+      213: -5231009468066692791
+    second: Player animations with sword_19
+  - first:
+      213: -5082587428419247746
+    second: Player animations with sword_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -223,7 +226,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player animations_0
+      name: Player animations with sword_0
       rect:
         serializedVersion: 2
         x: 0
@@ -237,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34b3446a50fd7dc70800000000000000
-      internalID: 8995903996053175107
+      spriteID: c3ea0c0c9a474d2b0800000000000000
+      internalID: -5560691367463571908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_1
+      name: Player animations with sword_1
       rect:
         serializedVersion: 2
         x: 32
@@ -258,14 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cae08a80091d7de80800000000000000
-      internalID: -8153818183780266324
+      spriteID: 78e27a6b576d96730800000000000000
+      internalID: 3992958345704582791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_2
+      name: Player animations with sword_2
       rect:
         serializedVersion: 2
         x: 64
@@ -279,14 +282,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7564efc8c8e86ee0800000000000000
-      internalID: -1267507345925839490
+      spriteID: cceebf6c708e05a50800000000000000
+      internalID: 6507956581651181260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_3
+      name: Player animations with sword_3
       rect:
         serializedVersion: 2
         x: 96
@@ -300,14 +303,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a609f0bc168fb360800000000000000
-      internalID: 7187610988092917416
+      spriteID: 94ff29c1252b63110800000000000000
+      internalID: 1240374813123608393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_4
+      name: Player animations with sword_4
       rect:
         serializedVersion: 2
         x: 128
@@ -321,14 +324,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 481e8a87daffe8fd0800000000000000
-      internalID: -2337650036039949948
+      spriteID: ec3233c812d9dfb10800000000000000
+      internalID: 2016940975543493582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_5
+      name: Player animations with sword_5
       rect:
         serializedVersion: 2
         x: 160
@@ -342,14 +345,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 662caef4dc55d9e00800000000000000
-      internalID: 1053092228172005990
+      spriteID: 0159b1197731999c0800000000000000
+      internalID: -3920080596392766192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_6
+      name: Player animations with sword_6
       rect:
         serializedVersion: 2
         x: 192
@@ -363,14 +366,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ff14e0ab8d3421f0800000000000000
-      internalID: -1070663141498281993
+      spriteID: c83282ad1788378e0800000000000000
+      internalID: -1696862612015799412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_7
+      name: Player animations with sword_7
       rect:
         serializedVersion: 2
         x: 224
@@ -384,14 +387,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e677d83bb5a691410800000000000000
-      internalID: 1448305697263286126
+      spriteID: 64270ca60f95f7830800000000000000
+      internalID: 4071071477284237894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_8
+      name: Player animations with sword_8
       rect:
         serializedVersion: 2
         x: 256
@@ -405,14 +408,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27f703b5da6cbb010800000000000000
-      internalID: 1205775773113286514
+      spriteID: 1361eea44d1da0240800000000000000
+      internalID: 4758846665990739505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_9
+      name: Player animations with sword_9
       rect:
         serializedVersion: 2
         x: 0
@@ -426,14 +429,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1fc0ab50f63f31b0800000000000000
-      internalID: -5674756599506219234
+      spriteID: 07a12f7a8ff5def20800000000000000
+      internalID: 3453522010837228144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_10
+      name: Player animations with sword_10
       rect:
         serializedVersion: 2
         x: 32
@@ -447,14 +450,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad025f688cf42ab80800000000000000
-      internalID: -8385051833534177062
+      spriteID: d014d3897804e5ae0800000000000000
+      internalID: -1558737469904699123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_11
+      name: Player animations with sword_11
       rect:
         serializedVersion: 2
         x: 64
@@ -468,14 +471,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ea95951c71a461a0800000000000000
-      internalID: -6817146381621945628
+      spriteID: 1f97f6a1a6a7dac70800000000000000
+      internalID: 8983971427802642929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_12
+      name: Player animations with sword_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06499d0c61761a900800000000000000
+      internalID: 693949165014193248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player animations with sword_13
       rect:
         serializedVersion: 2
         x: 0
@@ -489,14 +513,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a929df901f6be080800000000000000
-      internalID: -9157103300135802457
+      spriteID: 758abef3ab9356750800000000000000
+      internalID: 6297503126046615639
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_13
+      name: Player animations with sword_14
       rect:
         serializedVersion: 2
         x: 32
@@ -510,14 +534,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b409f3eef6dd86860800000000000000
-      internalID: 7523506650330665035
+      spriteID: da6e3e3aa2f8d6120800000000000000
+      internalID: 2408738789014103725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_14
+      name: Player animations with sword_15
       rect:
         serializedVersion: 2
         x: 64
@@ -531,14 +555,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 322a668aa6f2b3bb0800000000000000
-      internalID: -4955314829852761565
+      spriteID: 336833300620feb30800000000000000
+      internalID: 4318673179065419315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_15
+      name: Player animations with sword_16
       rect:
         serializedVersion: 2
         x: 96
@@ -552,14 +576,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2fab2d8376ebccd0800000000000000
-      internalID: -2536680581129064657
+      spriteID: d6719fb283223ed20800000000000000
+      internalID: 3306524176071333741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_16
+      name: Player animations with sword_17
       rect:
         serializedVersion: 2
         x: 128
@@ -573,14 +597,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fa36d2fafe4ee2d0800000000000000
-      internalID: -3247571441564632332
+      spriteID: 58ee9fdaf07ce9ff0800000000000000
+      internalID: -27365677560369531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_17
+      name: Player animations with sword_18
       rect:
         serializedVersion: 2
         x: 160
@@ -594,14 +618,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e112717b158f934f0800000000000000
-      internalID: -848374024934842082
+      spriteID: a60367234a96a5330800000000000000
+      internalID: 3700386197780443242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_18
+      name: Player animations with sword_19
       rect:
         serializedVersion: 2
         x: 192
@@ -615,14 +639,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64c875dfb42da7730800000000000000
-      internalID: 3997738843059489862
+      spriteID: 9410e279a98b767b0800000000000000
+      internalID: -5231009468066692791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player animations_19
+      name: Player animations with sword_20
       rect:
         serializedVersion: 2
         x: 224
@@ -636,8 +660,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc8c3976b3d07b9a0800000000000000
-      internalID: -6217486211769710389
+      spriteID: e71643d99a50779b0800000000000000
+      internalID: -5082587428419247746
       vertices: []
       indices: 
       edges: []
