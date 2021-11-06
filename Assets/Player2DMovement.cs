@@ -49,7 +49,7 @@ public class Player2DMovement : MonoBehaviour
         }
         
         
-        // X-Axis
+        // X-Axis   
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Character", "Blocking"));
         if (hit.collider == null)
         {
