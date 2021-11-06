@@ -85,9 +85,14 @@ public class PlayerMover : MonoBehaviour
             {
                 //changes jumpforce depending on gravity.
                 if (flipGrav.Top)
+                {
                     rb.velocity = Vector2.up * jumpForce * -1;
+                }
                 else
+                {
                     rb.velocity = Vector2.up * jumpForce;
+                }
+
             }
         }
 
