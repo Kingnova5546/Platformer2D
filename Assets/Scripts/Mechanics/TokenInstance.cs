@@ -13,7 +13,7 @@ namespace Platformer.Mechanics
     [RequireComponent(typeof(Collider2D))]
     public class TokenInstance : MonoBehaviour
     {
-        public GameObject cursedtoken;
+        //public GameObject cursedtoken;
         public AudioClip tokenCollectAudio;
         [Tooltip("If true, animation will start at a random position in the sequence.")]
         public bool randomAnimationStartTime = false;
@@ -43,11 +43,7 @@ namespace Platformer.Mechanics
         {
             //only exectue OnPlayerEnter if the player collides with this token.
             var player = other.gameObject.GetComponent<PlayerController>();
-            if (cursedtoken != null)
-            {
-                player.animator.SetTrigger("hurt");
-                player.audioSource.PlayOneShot(player.ouchAudio);
-            }
+
             if (player != null) OnPlayerEnter(player);
         }
 
