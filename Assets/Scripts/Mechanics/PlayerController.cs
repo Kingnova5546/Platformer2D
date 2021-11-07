@@ -41,45 +41,60 @@ namespace Platformer.Mechanics
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
         private cursedactivator check;
         public bool isCursed = false;
+        private GameObject PlayerObject;
 
         public Bounds Bounds => collider2d.bounds;
 
         void Awake()
         {
-            health = GetComponent<Health>();
-            audioSource = GetComponent<AudioSource>();
-            collider2d = GetComponent<Collider2D>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            animator = GetComponent<Animator>();
-            var Object = GameObject.Find("Cursed Token");
-            check = Object.GetComponent<cursedactivator>();
+            PlayerObject = GameObject.Find("Actual player");
+            if (PlayerObject == null)
+            {
+                health = GetComponent<Health>();
+                audioSource = GetComponent<AudioSource>();
+                collider2d = GetComponent<Collider2D>();
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                animator = GetComponent<Animator>();
+                var Object = GameObject.Find("Cursed Token");
+                check = Object.GetComponent<cursedactivator>();
+            }
 
         }
 
         protected override void Update()
         {
-            
-            if (check.isCursed && check != null)
+            if (PlayerObject == null)
             {
-                isCursed = check.isCursed;
-            }
-            if (controlEnabled)
-            {
-                move.x = Input.GetAxis("Horizontal");
-                if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
-                    jumpState = JumpState.PrepareToJump;
-                else if (Input.GetButtonUp("Jump"))
+                if (check.isCursed && check != null)
                 {
-                    stopJump = true;
-                    Schedule<PlayerStopJump>().player = this;
+                    isCursed = check.isCursed;
                 }
+                if (controlEnabled)
+                {
+                    move.x = Input.GetAxis("Horizontal");
+                    if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
+                        jumpState = JumpState.PrepareToJump;
+                    else if (Input.GetButtonUp("Jump"))
+                    {
+                        stopJump = true;
+                        Schedule<PlayerStopJump>().player = this;
+                    }
+                }
+                else
+                {
+                    move.x = 0;
+                }
+                UpdateJumpState();
+                base.Update();
+            }
+            else if (PlayerObject)
+            {
+                Debug.Log("Should be using other player movement");
             }
             else
             {
-                move.x = 0;
+                Debug.LogWarning("No player found");
             }
-            UpdateJumpState();
-            base.Update();
         }
 
         void UpdateJumpState()

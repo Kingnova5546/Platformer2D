@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Platformer.Core;
 using Platformer.Model;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 namespace Platformer.Gameplay
 {
     /// <summary>
@@ -18,10 +18,13 @@ namespace Platformer.Gameplay
         public override void Execute()
         {
             var Object = GameObject.Find("Fake Player");
+            var GameController = GameObject.Find("GameController");
             var check = Object.GetComponent<Platformer.Mechanics.PlayerController>();
             if (check.isCursed)
             {
                 Debug.Log("Died while cursed check passed! Need to put scene change logic HERE.");
+                GameObject.Destroy(GameController);
+                SceneManager.LoadScene(1);
             }
             var player = model.player; 
             if (player.health.IsAlive)
