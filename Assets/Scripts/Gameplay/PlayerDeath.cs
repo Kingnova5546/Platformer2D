@@ -21,7 +21,7 @@ namespace Platformer.Gameplay
             var check = Object.GetComponent<Platformer.Mechanics.PlayerController>();
             if (check.isCursed)
             {
-                Debug.Log("you died while cursed");
+                Debug.Log("Died while cursed check passed! Need to put scene change logic HERE.");
             }
             var player = model.player; 
             if (player.health.IsAlive)
