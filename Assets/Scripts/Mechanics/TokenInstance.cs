@@ -46,6 +46,7 @@ namespace Platformer.Mechanics
             if (cursedtoken != null)
             {
                 player.animator.SetTrigger("hurt");
+                player.audioSource.PlayOneShot(player.ouchAudio);
             }
             if (player != null) OnPlayerEnter(player);
         }
