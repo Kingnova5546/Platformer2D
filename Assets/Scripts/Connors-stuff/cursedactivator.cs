@@ -7,8 +7,8 @@ using static Platformer.Core.Simulation;
 
 public class cursedactivator : MonoBehaviour
 {
-    public GameObject cursedtext;
-    public GameObject cursedtoken;
+    public GameObject CursedText;
+    public GameObject music;
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +18,13 @@ public class cursedactivator : MonoBehaviour
 
      void OnTriggerEnter2D(Collider2D other)
     {
+        var musicAn = music.GetComponent<Animator>();
+        var cursedAn = CursedText.GetComponent<Animator>();
         var player = other.gameObject.GetComponent<PlayerController>();
-        if (cursedtoken != null)
-        {
             player.animator.SetTrigger("hurt");
             player.audioSource.PlayOneShot(player.ouchAudio);
-        }
+        musicAn.SetBool("canChange", true);
+        cursedAn.SetBool("canChange", true);
     }
 
     // Update is called once per frame
