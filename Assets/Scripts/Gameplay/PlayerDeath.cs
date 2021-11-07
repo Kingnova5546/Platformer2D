@@ -14,9 +14,16 @@ namespace Platformer.Gameplay
     {
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
+
         public override void Execute()
         {
-            var player = model.player;
+            var Object = GameObject.Find("Fake Player");
+            var check = Object.GetComponent<Platformer.Mechanics.PlayerController>();
+            if (check.isCursed)
+            {
+                Debug.Log("you died while cursed");
+            }
+            var player = model.player; 
             if (player.health.IsAlive)
             {
                 player.health.Die();

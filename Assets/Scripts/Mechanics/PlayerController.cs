@@ -39,6 +39,8 @@ namespace Platformer.Mechanics
         SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        private cursedactivator check;
+        public bool isCursed = false;
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -49,10 +51,18 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            var Object = GameObject.Find("Cursed Token");
+            check = Object.GetComponent<cursedactivator>();
+
         }
 
         protected override void Update()
         {
+            
+            if (check.isCursed && check != null)
+            {
+                isCursed = check.isCursed;
+            }
             if (controlEnabled)
             {
                 move.x = Input.GetAxis("Horizontal");

@@ -9,6 +9,7 @@ public class cursedactivator : MonoBehaviour
 {
     public GameObject CursedText;
     public GameObject music;
+    public bool isCursed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class cursedactivator : MonoBehaviour
             player.audioSource.PlayOneShot(player.ouchAudio);
         musicAn.SetBool("canChange", true);
         cursedAn.SetBool("canChange", true);
+        isCursed = true;
     }
 
     // Update is called once per frame
