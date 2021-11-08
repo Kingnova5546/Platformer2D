@@ -31,6 +31,9 @@ namespace Platformer.Gameplay
                 player.animator.SetBool("dead", false);
                 model.virtualCamera.m_Follow = player.transform;
                 model.virtualCamera.m_LookAt = player.transform;
+                //var Anim = GameObject.Find("CM Vcam1");
+                //var AnimComp = Anim.GetComponent<Animator>();
+                //AnimComp.gameObject.SetActive(true);
                 Simulation.Schedule<EnablePlayerInput>(2f);
             }
             else

@@ -13,14 +13,14 @@ namespace Platformer.Gameplay
     public class PlayerDeath : Simulation.Event<PlayerDeath>
     {
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-
+        private GameObject playerObject;
         public override void Execute()
         {
-            var Object = GameObject.Find("Fake Player");
+            playerObject = GameObject.Find("Fake Player");
             var GameController = GameObject.Find("GameController");
-            if (Object != null)
+            if (playerObject != null)
             {
-                var check = Object.GetComponent<Platformer.Mechanics.PlayerController>();
+                var check = playerObject.GetComponent<Platformer.Mechanics.PlayerController>();
                 if (check.isCursed)
                 {
                     Debug.Log("Died while cursed check passed! Need to put scene change logic HERE.");
@@ -32,6 +32,12 @@ namespace Platformer.Gameplay
             if (player.health.IsAlive)
             {
                 player.health.Die();
+                //if (playerObject == null)
+                //{
+                //    var Anim = GameObject.Find("CM Vcam1");
+                //    var AnimComp = Anim.GetComponent<Animator>();
+                //    AnimComp.gameObject.SetActive(false);
+                //}
                 model.virtualCamera.m_Follow = null;
                 model.virtualCamera.m_LookAt = null;
                 // player.collider.enabled = false;
