@@ -33,12 +33,16 @@ namespace Platformer.Mechanics
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
+        public bool MovementDisabled;
 
         bool jump;
         Vector2 move;
         SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        private cursedactivator check;
+        public bool isCursed = false;
+        private GameObject Object;
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -49,27 +53,42 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            Object = GameObject.Find("Cursed Token");
+            if (Object != null)
+            check = Object.GetComponent<cursedactivator>();
+
         }
 
         protected override void Update()
         {
-            if (controlEnabled)
+            
+
+            if (MovementDisabled == false)
             {
-                move.x = Input.GetAxis("Horizontal");
-                if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
-                    jumpState = JumpState.PrepareToJump;
-                else if (Input.GetButtonUp("Jump"))
+                if (check.isCursed)
                 {
-                    stopJump = true;
-                    Schedule<PlayerStopJump>().player = this;
+                    isCursed = check.isCursed;
                 }
+                if (controlEnabled)
+                {
+                    move.x = Input.GetAxis("Horizontal");
+                    if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
+                        jumpState = JumpState.PrepareToJump;
+                    else if (Input.GetButtonUp("Jump"))
+                    {
+                        stopJump = true;
+                        Schedule<PlayerStopJump>().player = this;
+                    }
+                }
+                else
+                {
+                    move.x = 0;
+                }
+                UpdateJumpState();
+                base.Update();
             }
-            else
-            {
-                move.x = 0;
-            }
-            UpdateJumpState();
-            base.Update();
+
+            
         }
 
         void UpdateJumpState()
