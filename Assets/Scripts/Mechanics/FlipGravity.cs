@@ -14,6 +14,7 @@ public class FlipGravity : MonoBehaviour
     public bool hasFlippedUp = false;
     private bool once = true;
     private bool twice = true;
+    private GameObject[] gravitems;
 
     public bool Top { get => top; set => top = value; }
 
@@ -22,6 +23,8 @@ public class FlipGravity : MonoBehaviour
         //player = GetComponent<PlayerMover>();
         //rb = GetComponent<Rigidbody2D>();
         //Camera = GameObject.Find("CM vcam1");
+        gravitems = GameObject.FindGameObjectsWithTag("GravityItem");
+        
     }
 
     // Update is called once per frame
@@ -29,13 +32,18 @@ public class FlipGravity : MonoBehaviour
     {
         if (isEnabled)
         {
-            
+
             if (hasFlippedDown && once == true)
             {
                 rb.gravityScale *= -1;
                 Rotation();
-                ObjectGravity.instance.FlipObject();
-                hasFlippedDown = false;
+
+                for (int i = 0; i < gravitems.Length; i++)
+                {
+                    var rd = gravitems[i].GetComponent<Rigidbody2D>();
+                    ObjectGravity.FlipObject(rd);
+                }
+                    hasFlippedDown = false;
                 once = false;
                 twice = true;
             }
@@ -44,13 +52,17 @@ public class FlipGravity : MonoBehaviour
             {
                 rb.gravityScale *= -1;
                 Rotation();
-                ObjectGravity.instance.FlipObject();
+                for (int i = 0; i < gravitems.Length; i++)
+                {
+                    var rd = gravitems[i].GetComponent<Rigidbody2D>();
+                    ObjectGravity.FlipObject(rd);
+                }
                 hasFlippedUp = false;
                 twice = false;
                 once = true;
             }
         }
-       
+
 
     }
     void Rotation()

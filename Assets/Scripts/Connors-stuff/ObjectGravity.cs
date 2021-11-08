@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class ObjectGravity : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    public static ObjectGravity instance;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        instance = this;
     }
 
     void Update()
     {
-        rb = rb;
+
     }
 
-    public void FlipObject()
+    public static void FlipObject(Rigidbody2D rb)
     {
         rb.gravityScale *= -1;
     }
