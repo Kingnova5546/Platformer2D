@@ -34,6 +34,7 @@ public class FlipGravity : MonoBehaviour
             {
                 rb.gravityScale *= -1;
                 Rotation();
+                ObjectGravity.instance.FlipObject();
                 hasFlippedDown = false;
                 once = false;
                 twice = true;
@@ -43,6 +44,7 @@ public class FlipGravity : MonoBehaviour
             {
                 rb.gravityScale *= -1;
                 Rotation();
+                ObjectGravity.instance.FlipObject();
                 hasFlippedUp = false;
                 twice = false;
                 once = true;
