@@ -18,7 +18,7 @@ public class PlayerMover : MonoBehaviour
     private int p;
     private float GravDefault = 1f; //default gravity is 1 for rigidbody
     public float Gravity = 1f; // Anything higher than 1 increases gravity. 0 is no gravity at all. Ex: 0.5 = half normal gravity
-
+    public bool disableInput = false;
     //play animation
     public Animator animator;
 
@@ -43,59 +43,62 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //checks gravity value, if not's not equal to default, update it, then reassign the current gravity as new default.
-        //In update method as gravity may be changed by triggers in-game.
-        if (GravDefault != Gravity)
+        if (disableInput == false)
         {
-            GravDefault = Gravity;
-            rb.gravityScale = Gravity;
-        }
-        //Find all objects with tag the tag world
-        var World = GameObject.FindGameObjectsWithTag("World");
-        //loop through each object with tag world
-        for (int i = 0; i < World.Length; i++)
-        {
-            //loops through each componenet in the selected object (object selected by i)
-            if (Player.IsTouching(World[i].GetComponent<Collider2D>()))
+            //checks gravity value, if not's not equal to default, update it, then reassign the current gravity as new default.
+            //In update method as gravity may be changed by triggers in-game.
+            if (GravDefault != Gravity)
             {
-                touching = true;
-                p = i;
-                break;
+                GravDefault = Gravity;
+                rb.gravityScale = Gravity;
             }
-        }
-        //if touching world run this
-        if (touching)
-        {
-            //Debug.Log("Touching ground");
-            //if no longer touching world set touching to false and breaks out of if statement
-            if (!Player.IsTouching(World[p].GetComponent<Collider2D>()))
+            //Find all objects with tag the tag world
+            var World = GameObject.FindGameObjectsWithTag("World");
+            //loop through each object with tag world
+            for (int i = 0; i < World.Length; i++)
             {
-                touching = false;
+                //loops through each componenet in the selected object (object selected by i)
+                if (Player.IsTouching(World[i].GetComponent<Collider2D>()))
+                {
+                    touching = true;
+                    p = i;
+                    break;
+                }
             }
-        }
-        //if not touching world run this
-        else if (!touching)
-        {
-            //Debug.Log("Not touching ground");
-        }
-        //if I'm pressing jump button and touching then do this
-        if (Input.GetKey(KeyCode.Space))
-        {
+            //if touching world run this
             if (touching)
             {
-                //changes jumpforce depending on gravity.
-                if (flipGrav.Top)
+                //Debug.Log("Touching ground");
+                //if no longer touching world set touching to false and breaks out of if statement
+                if (!Player.IsTouching(World[p].GetComponent<Collider2D>()))
                 {
-                    rb.velocity = Vector2.up * jumpForce * -1;
+                    touching = false;
                 }
-                else
+            }
+            //if not touching world run this
+            else if (!touching)
+            {
+                //Debug.Log("Not touching ground");
+            }
+            //if I'm pressing jump button and touching then do this
+            if (Input.GetKey(KeyCode.Space))
+            {
+                if (touching)
                 {
-                    rb.velocity = Vector2.up * jumpForce;
-                }
+                    //changes jumpforce depending on gravity.
+                    if (flipGrav.Top)
+                    {
+                        rb.velocity = Vector2.up * jumpForce * -1;
+                    }
+                    else
+                    {
+                        rb.velocity = Vector2.up * jumpForce;
+                    }
 
+                }
             }
         }
-
+       
     }
 
 
@@ -105,20 +108,24 @@ public class PlayerMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        if (moveInput == 0)
-            animator.SetBool("SpeedB", true);
-        else
-            animator.SetBool("SpeedB", false);
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        if (FacingRight == false && moveInput > 0)
+        if (disableInput == false)
         {
-            Flip();
+            moveInput = Input.GetAxis("Horizontal");
+            if (moveInput == 0)
+                animator.SetBool("SpeedB", true);
+            else
+                animator.SetBool("SpeedB", false);
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            if (FacingRight == false && moveInput > 0)
+            {
+                Flip();
+            }
+            else if (FacingRight == true && moveInput < 0)
+            {
+                Flip();
+            }
         }
-        else if (FacingRight == true && moveInput < 0)
-        {
-            Flip();
-        }
+        
     }
 
 

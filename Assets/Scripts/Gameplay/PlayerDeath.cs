@@ -14,17 +14,19 @@ namespace Platformer.Gameplay
     {
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
-
         public override void Execute()
         {
             var Object = GameObject.Find("Fake Player");
             var GameController = GameObject.Find("GameController");
-            var check = Object.GetComponent<Platformer.Mechanics.PlayerController>();
-            if (check.isCursed)
+            if (Object != null)
             {
-                Debug.Log("Died while cursed check passed! Need to put scene change logic HERE.");
-                GameObject.Destroy(GameController);
-                SceneManager.LoadScene(1);
+                var check = Object.GetComponent<Platformer.Mechanics.PlayerController>();
+                if (check.isCursed)
+                {
+                    Debug.Log("Died while cursed check passed! Need to put scene change logic HERE.");
+                    GameObject.Destroy(GameController);
+                    SceneManager.LoadScene(1);
+                }
             }
             var player = model.player; 
             if (player.health.IsAlive)
@@ -34,7 +36,6 @@ namespace Platformer.Gameplay
                 model.virtualCamera.m_LookAt = null;
                 // player.collider.enabled = false;
                 player.controlEnabled = false;
-
                 if (player.audioSource && player.ouchAudio)
                     player.audioSource.PlayOneShot(player.ouchAudio);
                 player.animator.SetTrigger("hurt");

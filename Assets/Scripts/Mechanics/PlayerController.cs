@@ -33,6 +33,7 @@ namespace Platformer.Mechanics
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
+        public bool MovementDisabled;
 
         bool jump;
         Vector2 move;
@@ -41,31 +42,30 @@ namespace Platformer.Mechanics
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
         private cursedactivator check;
         public bool isCursed = false;
-        private GameObject PlayerObject;
+        private GameObject Object;
 
         public Bounds Bounds => collider2d.bounds;
 
         void Awake()
         {
-            PlayerObject = GameObject.Find("Actual player");
-            if (PlayerObject == null)
-            {
-                health = GetComponent<Health>();
-                audioSource = GetComponent<AudioSource>();
-                collider2d = GetComponent<Collider2D>();
-                spriteRenderer = GetComponent<SpriteRenderer>();
-                animator = GetComponent<Animator>();
-                var Object = GameObject.Find("Cursed Token");
-                check = Object.GetComponent<cursedactivator>();
-            }
+            health = GetComponent<Health>();
+            audioSource = GetComponent<AudioSource>();
+            collider2d = GetComponent<Collider2D>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            animator = GetComponent<Animator>();
+            Object = GameObject.Find("Cursed Token");
+            if (Object != null)
+            check = Object.GetComponent<cursedactivator>();
 
         }
 
         protected override void Update()
         {
-            if (PlayerObject == null)
+            
+
+            if (MovementDisabled == false)
             {
-                if (check.isCursed && check != null)
+                if (check.isCursed)
                 {
                     isCursed = check.isCursed;
                 }
@@ -87,14 +87,8 @@ namespace Platformer.Mechanics
                 UpdateJumpState();
                 base.Update();
             }
-            else if (PlayerObject)
-            {
-                Debug.Log("Should be using other player movement");
-            }
-            else
-            {
-                Debug.LogWarning("No player found");
-            }
+
+            
         }
 
         void UpdateJumpState()

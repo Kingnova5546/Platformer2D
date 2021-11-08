@@ -38,7 +38,7 @@ namespace Platformer.Mechanics
 
         protected const float minMoveDistance = 0.001f;
         protected const float shellRadius = 0.01f;
-
+        private GameObject Object;
 
         /// <summary>
         /// Bounce the object's vertical velocity.
@@ -86,12 +86,18 @@ namespace Platformer.Mechanics
             contactFilter.useTriggers = false;
             contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
             contactFilter.useLayerMask = true;
+
+            Object = GameObject.Find("Fake Player");
         }
 
         protected virtual void Update()
         {
-            targetVelocity = Vector2.zero;
-            ComputeVelocity();
+            if(Object != null)
+            {
+                targetVelocity = Vector2.zero;
+                ComputeVelocity();
+            }
+
         }
 
         protected virtual void ComputeVelocity()
