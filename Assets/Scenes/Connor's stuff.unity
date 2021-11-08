@@ -85523,6 +85523,7 @@ GameObject:
   - component: {fileID: 1946717925}
   - component: {fileID: 1946717924}
   - component: {fileID: 1946717926}
+  - component: {fileID: 1946717927}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -85597,6 +85598,25 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 1665035850}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!95 &1946717927
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946717923}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e9c734a2784c6b4d917fa81df342c67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1981112389
 GameObject:
   m_ObjectHideFlags: 0
@@ -85661,6 +85681,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2843013035416313251, guid: 4b8aaee23ca498f458d98c88575673e1, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450616013393194164, guid: 4b8aaee23ca498f458d98c88575673e1, type: 3}
+      propertyPath: isEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450616013393194164, guid: 4b8aaee23ca498f458d98c88575673e1, type: 3}
+      propertyPath: CameraFlips
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7887752353869507530, guid: 4b8aaee23ca498f458d98c88575673e1, type: 3}
