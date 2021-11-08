@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class FlipGravity : MonoBehaviour
 {
-    private PlayerMover player;
+    public PlayerMover player;
     private bool top;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public bool CameraFlips = true;
-    private GameObject Camera;
+    //private GameObject Camera;
     public bool isEnabled = false; // Use up arrow key to activate when enabled. For testing, will rewrite for triggers when needed.
+    public bool hasFlippedDown = false;
+    public bool hasFlippedUp = false;
+    private bool once = true;
+    private bool twice = true;
 
     public bool Top { get => top; set => top = value; }
 
     void Start()
     {
-        player = GetComponent<PlayerMover>();
-        rb = GetComponent<Rigidbody2D>();
-        Camera = GameObject.Find("CM vcam1");
+        //player = GetComponent<PlayerMover>();
+        //rb = GetComponent<Rigidbody2D>();
+        //Camera = GameObject.Find("CM vcam1");
     }
 
     // Update is called once per frame
@@ -26,10 +30,22 @@ public class FlipGravity : MonoBehaviour
         if (isEnabled)
         {
             
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (hasFlippedDown && once == true)
             {
                 rb.gravityScale *= -1;
                 Rotation();
+                hasFlippedDown = false;
+                once = false;
+                twice = true;
+            }
+
+            if (hasFlippedUp && twice == true)
+            {
+                rb.gravityScale *= -1;
+                Rotation();
+                hasFlippedUp = false;
+                twice = false;
+                once = true;
             }
         }
        
@@ -40,17 +56,17 @@ public class FlipGravity : MonoBehaviour
         if (!Top)
         {
             //if camera flip is checked flip camera, if not ignore
-            if (CameraFlips)
-            Camera.transform.eulerAngles = new Vector3(180f, 0, 0);
-            transform.eulerAngles = new Vector3(0, 0, 180f);
+            //if (CameraFlips)
+            //    Camera.transform.eulerAngles = new Vector3(180f, 0, 0);
+            player.transform.eulerAngles = new Vector3(0, 0, 180f);
             //flips the player when camera flips to maintain the correct direction
             player.Flip();
         }
         else
         {
-            if (CameraFlips)
-            Camera.transform.eulerAngles = Vector3.zero;
-            transform.eulerAngles = Vector3.zero;
+            //if (CameraFlips)
+            //Camera.transform.eulerAngles = Vector3.zero;
+            player.transform.eulerAngles = Vector3.zero;
             player.Flip();
         }
         player.FacingRight = !player.FacingRight;

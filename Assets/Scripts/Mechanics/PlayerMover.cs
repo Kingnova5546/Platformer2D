@@ -9,7 +9,7 @@ using static Platformer.Mechanics.PlayerController;
 
 public class PlayerMover : MonoBehaviour
 {
-    private FlipGravity flipGrav;
+    public FlipGravity flipGrav;
     public float speed;
     public float jumpForce;
     private float moveInput;
@@ -36,7 +36,6 @@ public class PlayerMover : MonoBehaviour
     }
     void Start()
     {
-        flipGrav = GetComponent<FlipGravity>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -115,15 +114,32 @@ public class PlayerMover : MonoBehaviour
                 animator.SetBool("SpeedB", true);
             else
                 animator.SetBool("SpeedB", false);
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-            if (FacingRight == false && moveInput > 0)
+            //makes the player move
+            if (!flipGrav.Top)
             {
-                Flip();
+                rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+                if (FacingRight == false && moveInput > 0)
+                {
+                    Flip();
+                }
+                else if (FacingRight == true && moveInput < 0)
+                {
+                    Flip();
+                }
             }
-            else if (FacingRight == true && moveInput < 0)
+            else
             {
-                Flip();
+                rb.velocity = new Vector2(moveInput * speed * -1, rb.velocity.y);
+                if (FacingRight == false && moveInput < 0)
+                {
+                    Flip();
+                }
+                else if (FacingRight == true && moveInput > 0)
+                {
+                    Flip();
+                }
             }
+            
         }
         
     }
