@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Connor's stuff.unity
     guid: 9084c6f2930a6ec4d91ec575304ad634
+  - enabled: 1
+    path: Assets/Scenes/PuzzleTest.unity
+    guid: 4d5c1e175fc1a0e45b01dff8dc3ae62d
   m_configObjects: {}
