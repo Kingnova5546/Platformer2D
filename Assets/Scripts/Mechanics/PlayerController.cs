@@ -33,18 +33,21 @@ namespace Platformer.Mechanics
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
-        public bool MovementDisabled;
+        public bool MovementDisabled = false;
 
         bool jump;
         Vector2 move;
         SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-        private cursedactivator check;
+ //       private cursedactivator check;
         public bool isCursed = false;
-        private GameObject Object;
+ //       private GameObject Object;
+        public Collider2D WeaponCollider;
+        public bool isWeaponActive;
 
         public Bounds Bounds => collider2d.bounds;
+        public Bounds WeaponBounds => WeaponCollider.bounds;
 
         void Awake()
         {
@@ -53,10 +56,14 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
-            Object = GameObject.Find("Cursed Token");
+/*            Object = GameObject.Find("Cursed Token");
             if (Object != null)
-            check = Object.GetComponent<cursedactivator>();
-
+            {
+                cursedactivator cursedactivator = Object.GetComponent<cursedactivator>();
+                check = cursedactivator;
+            }*/
+            isWeaponActive = false;
+            WeaponCollider.enabled = false;
         }
 
         protected override void Update()
@@ -65,10 +72,10 @@ namespace Platformer.Mechanics
 
             if (MovementDisabled == false)
             {
-                if (check.isCursed)
+/*                if (check.isCursed)
                 {
                     isCursed = check.isCursed;
-                }
+                }*/
                 if (controlEnabled)
                 {
                     move.x = Input.GetAxis("Horizontal");

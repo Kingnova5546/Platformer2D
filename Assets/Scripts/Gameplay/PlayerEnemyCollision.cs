@@ -2,6 +2,7 @@ using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static Platformer.Core.Simulation;
 
 namespace Platformer.Gameplay
@@ -14,39 +15,97 @@ namespace Platformer.Gameplay
     public class PlayerEnemyCollision : Simulation.Event<PlayerEnemyCollision>
     {
         public EnemyController enemy;
-        public PlayerController player;
+        public PlayerMover playerMover;
+        public PlayerController playerController;
+        bool willJumpHurtEnemy;
+        bool willWeaponHurtEnemy;
 
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public override void Execute()
         {
-            var willHurtEnemy = player.Bounds.center.y >= enemy.Bounds.max.y;
-
-            if (willHurtEnemy)
+            if (SceneManager.GetActiveScene().name == "Micro Scene")
             {
-                var enemyHealth = enemy.GetComponent<Health>();
-                if (enemyHealth != null)
+                willJumpHurtEnemy = playerController.Bounds.center.y >= enemy.Bounds.max.y;
+
+                if (willJumpHurtEnemy)
                 {
-                    enemyHealth.Decrement();
-                    if (!enemyHealth.IsAlive)
+                    var enemyHealth = enemy.GetComponent<Health>();
+                    if (enemyHealth != null)
                     {
-                        Schedule<EnemyDeath>().enemy = enemy;
-                        player.Bounce(2);
+                        enemyHealth.Decrement();
+                        if (!enemyHealth.IsAlive)
+                        {
+                            Schedule<EnemyDeath>().enemy = enemy;
+                            playerController.Bounce(2);
+                        }
+                        else
+                        {
+                            playerController.Bounce(7);
+                        }
                     }
                     else
                     {
-                        player.Bounce(7);
+                        Schedule<EnemyDeath>().enemy = enemy;
+                        playerController.Bounce(2);
                     }
                 }
                 else
                 {
-                    Schedule<EnemyDeath>().enemy = enemy;
-                    player.Bounce(2);
+                    Schedule<PlayerDeath>();
                 }
             }
-            else
+            else if (SceneManager.GetActiveScene().name == "Connor's stuff")
             {
-                Schedule<PlayerDeath>();
+                willJumpHurtEnemy = playerMover.Bounds.center.y >= enemy.Bounds.max.y;
+                willWeaponHurtEnemy = playerMover.WeaponCollider.isActiveAndEnabled && playerMover.WeaponCollider.IsTouching(enemy._collider);
+
+                if (willJumpHurtEnemy || willWeaponHurtEnemy)
+                {
+                    var enemyHealth = enemy.GetComponent<Health>();
+                    if (willJumpHurtEnemy)
+                    {
+                        if (enemyHealth != null)
+                        {
+                            enemyHealth.Decrement();
+                            if (!enemyHealth.IsAlive)
+                            {
+                                Schedule<EnemyDeath>().enemy = enemy;
+                                playerMover.Bounce(2);
+                            }
+                            else
+                            {
+                                playerMover.Bounce(7);
+                            }
+                        }
+                        else
+                        {
+                            Schedule<EnemyDeath>().enemy = enemy;
+                            playerMover.Bounce(2);
+                        }
+
+                    }
+                    else if (willWeaponHurtEnemy)
+                    {
+                        if (enemyHealth != null)
+                        {
+                            enemyHealth.Decrement();
+                            if (!enemyHealth.IsAlive)
+                            {
+                                Schedule<EnemyDeath>().enemy = enemy;
+                            }
+                        }
+                        else
+                        { //add check for player health <= 0
+                            Schedule<EnemyDeath>().enemy = enemy;
+                        }
+                    }
+                }
+                else
+                {
+                    Schedule<PlayerDeath>();
+                }
+
             }
         }
     }

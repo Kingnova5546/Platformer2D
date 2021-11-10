@@ -21,7 +21,7 @@ public class cursedactivator : MonoBehaviour
     {
         var musicAn = music.GetComponent<Animator>();
         var cursedAn = CursedText.GetComponent<Animator>();
-        var player = other.gameObject.GetComponent<PlayerController>();
+        var player = other.gameObject.GetComponent<PlayerMover>();
             player.animator.SetTrigger("hurt");
             player.audioSource.PlayOneShot(player.ouchAudio);
         musicAn.SetBool("canChange", true);

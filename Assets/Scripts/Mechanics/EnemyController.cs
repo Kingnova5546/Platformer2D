@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Platformer.Gameplay;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static Platformer.Core.Simulation;
 
 namespace Platformer.Mechanics
@@ -33,12 +34,26 @@ namespace Platformer.Mechanics
 
         void OnCollisionEnter2D(Collision2D collision)
         {
-            var player = collision.gameObject.GetComponent<PlayerController>();
-            if (player != null)
+            if (SceneManager.GetActiveScene().name == "Micro Scene")
             {
-                var ev = Schedule<PlayerEnemyCollision>();
-                ev.player = player;
-                ev.enemy = this;
+                var player = collision.gameObject.GetComponent<PlayerController>();
+                if (player != null)
+                {
+                    var ev = Schedule<PlayerEnemyCollision>();
+                    ev.playerController = player;
+                    ev.enemy = this;
+                }
+            }
+            else if (SceneManager.GetActiveScene().name == "Connor's stuff")
+            {
+                var player = collision.gameObject.GetComponent<PlayerMover>();
+                if (player != null)
+                {
+                    var ev = Schedule<PlayerEnemyCollision>();
+                    ev.playerMover = player;
+                    ev.enemy = this;
+                }
+
             }
         }
 

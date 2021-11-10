@@ -6,6 +6,7 @@ using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
 using static Platformer.Mechanics.PlayerController;
+using Platformer.Mechanics;
 
 public class PlayerMover : MonoBehaviour
 {
@@ -21,7 +22,21 @@ public class PlayerMover : MonoBehaviour
     public bool disableInput = false;
     //play animation
     public Animator animator;
+    public Health health;
+    public new Collider2D collider2D;
+    public Collider2D WeaponCollider;
+    readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+    public bool isCursed = false;
+    public AudioClip jumpAudio;
+    public AudioClip respawnAudio;
+    public AudioClip ouchAudio;
+    /*internal new*/
+    public AudioSource audioSource;
+    private GameObject Object;
+    private cursedactivator check;
 
+    public Bounds Bounds => collider2D.bounds;
+    public Bounds WeaponBounds => WeaponCollider.bounds;
 
     //colider?
     public Collider2D Player;
@@ -32,7 +47,17 @@ public class PlayerMover : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        //collider2d = GetComponent<Collider2D>();
+        health = GetComponent<Health>();
+        WeaponCollider.enabled = false;
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        collider2D = GetComponent<Collider2D>();
+        Object = GameObject.Find("Cursed Token");
+        if (Object != null)
+        {
+            cursedactivator cursedactivator = Object.GetComponent<cursedactivator>();
+            check = cursedactivator;
+        }
     }
     void Start()
     {
@@ -93,16 +118,11 @@ public class PlayerMover : MonoBehaviour
                     {
                         rb.velocity = Vector2.up * jumpForce;
                     }
-
+                if (audioSource && jumpAudio) audioSource.PlayOneShot(jumpAudio);
                 }
             }
         }
-       
     }
-
-
-
-
 
 
     private void FixedUpdate()
@@ -144,7 +164,6 @@ public class PlayerMover : MonoBehaviour
         
     }
 
-
     public void Flip()
     {
         FacingRight = !FacingRight;
@@ -152,4 +171,24 @@ public class PlayerMover : MonoBehaviour
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
+
+    /// <summary>
+    /// Bounce the object's vertical velocity.
+    /// </summary>
+    /// <param name="value"></param>
+    public void Bounce(float value)
+    {
+        moveInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(moveInput * speed, value);
+    }
+
+    /// <summary>
+    /// Bounce the objects velocity in a direction.
+    /// </summary>
+    /// <param name="dir"></param>
+    public void Bounce(Vector2 dir)
+    {
+        rb.velocity = new Vector2(dir.x, dir.y);
+    }
+
 }
