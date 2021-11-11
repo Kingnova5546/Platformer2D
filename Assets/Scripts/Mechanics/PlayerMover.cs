@@ -25,14 +25,15 @@ public class PlayerMover : MonoBehaviour
 
     //colider?
     public Collider2D Player;
+    public int Health = 3;
     private Rigidbody2D rb;
-
     public bool FacingRight { get => facingRight; set => facingRight = value; }
+
 
     // Start is called before the first frame update
     private void Awake()
     {
-        //collider2d = GetComponent<Collider2D>();
+
     }
     void Start()
     {

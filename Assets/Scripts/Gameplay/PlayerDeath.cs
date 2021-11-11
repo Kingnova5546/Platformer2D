@@ -16,22 +16,20 @@ namespace Platformer.Gameplay
         private GameObject playerObject;
         public override void Execute()
         {
+            var user = GameObject.Find("Actual player");
+            if (user != null)
+            {
+                var health = user.GetComponent<PlayerMover>();
+                Debug.Log(health.Health);
+            }
             playerObject = GameObject.Find("Fake Player");
             var GameController = GameObject.Find("GameController");
-            if (playerObject != null)
-            {
-                var check = playerObject.GetComponent<Platformer.Mechanics.PlayerController>();
-                if (check.isCursed)
-                {
-                    Debug.Log("Died while cursed check passed! Need to put scene change logic HERE.");
-                    GameObject.Destroy(GameController);
-                    SceneManager.LoadScene(1);
-                }
-            }
+           
             var player = model.player; 
             if (player.health.IsAlive)
             {
                 player.health.Die();
+
                 //if (playerObject == null)
                 //{
                 //    var Anim = GameObject.Find("CM Vcam1");
@@ -47,6 +45,16 @@ namespace Platformer.Gameplay
                 player.animator.SetTrigger("hurt");
                 player.animator.SetBool("dead", true);
                 Simulation.Schedule<PlayerSpawn>(2);
+                if (playerObject != null)
+                {
+                    var check = playerObject.GetComponent<Platformer.Mechanics.PlayerController>();
+                    if (check.isCursed)
+                    {
+                        Debug.Log("Died while cursed check passed! Need to put scene change logic HERE.");
+                        GameObject.Destroy(GameController);
+                        SceneManager.LoadScene(1);
+                    }
+                }
             }
         }
     }

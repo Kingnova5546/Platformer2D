@@ -46,6 +46,16 @@ namespace Platformer.Gameplay
             }
             else
             {
+                var user = GameObject.Find("Actual player");
+                if (user != null)
+                {
+                    var health = user.GetComponent<PlayerMover>();
+                    health.Health--;
+                    Debug.Log(health.Health);
+                    if (health.Health == 0) 
+                        Schedule<PlayerDeath>();
+                }
+                else
                 Schedule<PlayerDeath>();
             }
         }

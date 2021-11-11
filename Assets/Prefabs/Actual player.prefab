@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 8509783501685719824}
   - component: {fileID: 7908901155839008997}
   - component: {fileID: 2843013035416313251}
-  - component: {fileID: 3450616013393194164}
   m_Layer: 0
   m_Name: Actual player
   m_TagString: Player
@@ -276,25 +275,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a795f7622875d45b4615ce315d621f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipGrav: {fileID: 0}
   speed: 1
   jumpForce: 2
   Gravity: 1
+  disableInput: 0
   animator: {fileID: 7823009714339646950}
   Player: {fileID: 7908901156448721547}
---- !u!114 &3450616013393194164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7910086209711594334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd8e6dd3e6e2de4681d5420511274b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraFlips: 1
-  isEnabled: 0
+  Health: 3
 --- !u!114 &319787529263415089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,8 +295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a795f7622875d45b4615ce315d621f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipGrav: {fileID: 0}
   speed: 0
   jumpForce: 0
   Gravity: 1
+  disableInput: 0
   animator: {fileID: 0}
   Player: {fileID: 0}
+  Health: 3
