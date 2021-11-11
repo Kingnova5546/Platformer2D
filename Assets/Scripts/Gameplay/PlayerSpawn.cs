@@ -15,6 +15,7 @@ namespace Platformer.Gameplay
         public override void Execute()
         {
             var player = model.player;
+            
             player.collider2d.enabled = true;
             player.controlEnabled = false;
             if (player.audioSource && player.respawnAudio)
@@ -23,6 +24,7 @@ namespace Platformer.Gameplay
             var otherPlayer = GameObject.Find("Actual player");
             if (otherPlayer != null)
             {
+                player.animator.SetTrigger("dead");
                 var mySpawn = GameObject.Find("SpawnPoint");
                 var spawnPoint = mySpawn.transform.position;
                 float x = spawnPoint.x;

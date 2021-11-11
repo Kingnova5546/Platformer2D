@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 8509783501685719824}
   - component: {fileID: 7908901155839008997}
   - component: {fileID: 2843013035416313251}
-  - component: {fileID: 3450616013393194164}
   m_Layer: 0
   m_Name: Actual player
   m_TagString: Player
@@ -320,3 +319,4 @@ MonoBehaviour:
   disableInput: 0
   animator: {fileID: 0}
   Player: {fileID: 0}
+  Health: 3
