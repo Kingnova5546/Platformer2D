@@ -85888,7 +85888,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946717923}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5e9c734a2784c6b4d917fa81df342c67, type: 2}
   m_CullingMode: 0
@@ -87202,6 +87202,7 @@ GameObject:
   - component: {fileID: 7781284888283006186}
   - component: {fileID: 7781284888283006189}
   - component: {fileID: 7781284888283006192}
+  - component: {fileID: 7781284888283006193}
   m_Layer: 5
   m_Name: HealthBorder
   m_TagString: Untagged
@@ -87228,6 +87229,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7781284888283006193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7781284888283006191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4344c7c18079bc347865d712026e83cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1530393898}
+  Anim: {fileID: 7781284888283006192}
 --- !u!1001 &8411804070005142548
 PrefabInstance:
   m_ObjectHideFlags: 0

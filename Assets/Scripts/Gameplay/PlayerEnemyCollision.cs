@@ -51,6 +51,7 @@ namespace Platformer.Gameplay
                 {
                     var health = user.GetComponent<PlayerMover>();
                     health.Health--;
+                    player.animator.SetTrigger("hurt");
                     Debug.Log(health.Health);
                     if (health.Health == 0)
                     {
