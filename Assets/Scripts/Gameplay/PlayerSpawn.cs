@@ -24,7 +24,6 @@ namespace Platformer.Gameplay
             var otherPlayer = GameObject.Find("Actual player");
             if (otherPlayer != null)
             {
-                player.animator.SetTrigger("dead");
                 var mySpawn = GameObject.Find("SpawnPoint");
                 var spawnPoint = mySpawn.transform.position;
                 float x = spawnPoint.x;
