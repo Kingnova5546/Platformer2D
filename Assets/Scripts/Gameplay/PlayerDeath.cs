@@ -16,12 +16,6 @@ namespace Platformer.Gameplay
         private GameObject playerObject;
         public override void Execute()
         {
-            var user = GameObject.Find("Actual player");
-            if (user != null)
-            {
-                var health = user.GetComponent<PlayerMover>();
-                Debug.Log(health.Health);
-            }
             playerObject = GameObject.Find("Fake Player");
             var GameController = GameObject.Find("GameController");
            

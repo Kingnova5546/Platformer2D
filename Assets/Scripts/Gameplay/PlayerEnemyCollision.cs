@@ -52,8 +52,12 @@ namespace Platformer.Gameplay
                     var health = user.GetComponent<PlayerMover>();
                     health.Health--;
                     Debug.Log(health.Health);
-                    if (health.Health == 0) 
+                    if (health.Health == 0)
+                    {
                         Schedule<PlayerDeath>();
+                        
+                    }
+                        
                 }
                 else
                 Schedule<PlayerDeath>();
