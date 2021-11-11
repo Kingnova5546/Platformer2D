@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -292,8 +292,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a795f7622875d45b4615ce315d621f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipGrav: {fileID: 0}
   speed: 1
   jumpForce: 2
+  Gravity: 1
+  disableInput: 0
+  animator: {fileID: 0}
   Player: {fileID: 7908901156448721547}
 --- !u!114 &3450616013393194164
 MonoBehaviour:
@@ -307,8 +311,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd8e6dd3e6e2de4681d5420511274b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gravity: 1
+  player: {fileID: 0}
+  rb: {fileID: 0}
   CameraFlips: 1
+  isEnabled: 0
+  hasFlippedDown: 0
+  hasFlippedUp: 0
 --- !u!114 &319787529263415089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +329,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a795f7622875d45b4615ce315d621f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipGrav: {fileID: 0}
   speed: 0
   jumpForce: 0
+  Gravity: 1
+  disableInput: 0
+  animator: {fileID: 0}
   Player: {fileID: 0}
